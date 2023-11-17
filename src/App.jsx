@@ -1,6 +1,5 @@
 import React from "react";
-import ProductBody from "./components/productBody";
-import { AnimatePresence } from "framer-motion";
+import ProductBody from "./components/ProductBody";
 
 function App() {
   return (
