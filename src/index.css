@@ -1,4 +1,4 @@
-.app {
+.body-1 {
   padding-top: 30px;
 }
 
@@ -23,15 +23,12 @@
   width: 90px;
 }
 
-.product {
-}
-
-.main {
+.main-1 {
   position: relative;
   display: flex;
 }
 
-.details {
+.details-1 {
   position: relative;
   left: 210px;
   width: 600px;
@@ -57,7 +54,7 @@
   height: 30px;
 }
 
-.product-name {
+.main-1 .product-name {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 100px;
   font-weight: bolder;
@@ -91,7 +88,7 @@
 
 .button-24 {
   margin: 40px 0px 0px 0px;
-  background: red;
+  background: rgb(198, 67, 67);
   border: 1px solid red;
   border-radius: 6px;
   color: white;
@@ -118,4 +115,52 @@
   width: 1024px;
   object-fit: cover;
   clip-path: ellipse(25% 50% at 37% 32%);
+}
+
+.main-2 {
+  height: 100vh;
+  padding-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.details-2 {
+  padding-left: 20px;
+}
+
+.jacket-2 {
+  background: linear-gradient(0deg, gray, transparent);
+  height: 100%;
+  width: 1024px;
+}
+
+.jacket-2 img {
+  /* 864, 1229 */
+  padding-top: 73px;
+  height: 720px;
+  width: 1024px;
+  object-fit: cover;
+  clip-path: ellipse(25% 50% at 37% 32%);
+}
+
+.main-2 .product-name {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;
+  font-weight: bolder;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  letter-spacing: -4px;
+}
+.product-details {
+  font-size: 15px;
+  font-weight: 100;
+  color: rgb(99, 94, 94);
+}
+.properties-header {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 22px;
+  letter-spacing: -1.5px;
+}
+.property-description {
+  color: rgb(103, 101, 101);
 }

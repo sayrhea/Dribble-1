@@ -1,5 +1,6 @@
 import React from "react";
-import { easeIn, easeInOut, motion } from "framer-motion";
+import { AnimatePresence, easeIn, easeInOut, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const transition = { duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] };
 
@@ -14,20 +15,26 @@ const letterVariants = {
 
 function ProductBody() {
   return (
-    <div className="app">
+    <motion.div className="body-1">
       <div className="header">
         <div>
-          <div className="brand">
+          <motion.div
+            className="brand"
+            exit={{ opacity: 0, transition: transition }}
+          >
             <motion.span className="logo" whileHover={{ scale: 1.1 }}>
               CT
             </motion.span>
             <h3 className="company-name">CITRUM</h3>
-          </div>
+          </motion.div>
         </div>
       </div>
-      <div className="product">
-        <div className="main">
-          <motion.div className="details">
+      <div className="productPage-1">
+        <div className="main-1">
+          <motion.div
+            className="details-1"
+            exit={{ y: 600, transition: transition }}
+          >
             <div className="brand-name">KARLAR & KONUR</div>
             <div className="product-name">
               <div>
@@ -73,21 +80,26 @@ function ProductBody() {
               x: 0,
               transition: transition,
             }}
+            // exit={{ x: -600, transition: { duration: 1 } }}
             className="jacket"
+            key="jacket"
           >
-            <motion.img
-              src="/c.png"
-              initial={{ opacity: 0, y: 60 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                transition: { delay: 0.8, ...transition },
-              }}
-            ></motion.img>
+            <Link to="/jacket1">
+              <motion.img
+                src="/c.png"
+                initial={{ opacity: 0, y: 60 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { delay: 0.8, ...transition },
+                }}
+                // exit={{ scale: 1.2, transition: transition, x: 102 }}
+              ></motion.img>
+            </Link>
           </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
