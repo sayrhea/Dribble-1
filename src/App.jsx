@@ -10,7 +10,7 @@ function App() {
     <AnimatePresence>
       <Routes location={location} key={location.key}>
         <Route index element={<ProductBody />} />
-        <Route path="/jacket1" element={<ProductDetails />} />
+        <Route path="/hrafn-bomber-jacket" element={<ProductDetails />} />
       </Routes>
     </AnimatePresence>
   );
