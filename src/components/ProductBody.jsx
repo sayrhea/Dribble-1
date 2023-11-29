@@ -1,5 +1,6 @@
 import React from "react";
-import { easeIn, easeInOut, motion } from "framer-motion";
+import { AnimatePresence, easeIn, easeInOut, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const transition = { duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] };
 
@@ -8,86 +9,147 @@ const letterVariants = {
   animate: {
     y: 0,
     opacity: 1,
-    transition: transition,
+    transition: { ...transition, delay: 0.9 },
   },
+  exit: { y: 40, opacity: 0, transition: { ...transition, duration: 0.6 } },
 };
+// const fadingVariants = {
+//   initial: { opacity: 0 },
+//   animate: {
+//     opacity: 1,
+//     transition: { duration: 0.6, delay: 1, ...transition },
+//   },
+// };
 
 function ProductBody() {
   return (
-    <div className="app">
-      <div className="header">
-        <div>
-          <div className="brand">
-            <motion.span className="logo" whileHover={{ scale: 1.1 }}>
-              CT
-            </motion.span>
-            <h3 className="company-name">CITRUM</h3>
+    <>
+      <motion.header
+        className="site-header"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: { duration: 0.6, delay: 1.2, ...transition },
+        }}
+        exit={{
+          opacity: 0,
+          transition: transition,
+        }}
+      >
+        <motion.div className="site-header-brand">
+          <motion.span>CT</motion.span>
+        </motion.div>
+        <h3 className="site-header-company-name">CITRUM</h3>
+      </motion.header>
+      <motion.div className="showcase">
+        <div className="product">
+          <motion.div
+            className="product-details"
+            exit={{
+              width: 0,
+              transition: { delay: 0.5, duration: 0.5, ease: easeIn },
+            }}
+          >
+            <div className="left-section">
+              <motion.div
+                className="product-brand-name"
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.6, delay: 1.2, ...transition },
+                }}
+                exit={{
+                  opacity: 0,
+                  transition: transition,
+                }}
+              >
+                KARLAR & KONUR
+              </motion.div>
+              <div className="product-name">
+                <div>
+                  <motion.h1
+                    variants={letterVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    Hrafn
+                  </motion.h1>
+                </div>
+                <div>
+                  <motion.h1
+                    variants={letterVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    Bomber Jacket
+                  </motion.h1>
+                </div>
+              </div>
+              <motion.h1
+                className="product-price"
+                variants={letterVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                34,990
+              </motion.h1>
+              <motion.div
+                className="product-description"
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.6, delay: 1.2, ...transition },
+                }}
+                exit={{
+                  opacity: 0,
+                  transition: transition,
+                }}
+              >
+                A new version of the classic bomber jacket for both the sexes in
+                warm and extremely lightweight. Insulated with PrimaLoft.
+              </motion.div>
+              <motion.button
+                className="button"
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 0.6, delay: 1.2, ...transition },
+                }}
+                exit={{
+                  opacity: 0,
+                  transition: transition,
+                }}
+              >
+                PLACE ORDER
+              </motion.button>
+            </div>
+          </motion.div>
+          <div className="product-gallery">
+            <motion.div
+              className="img-background"
+              initial={{ x: 1000 }}
+              animate={{ x: 0, transition: transition }}
+            ></motion.div>
+            <motion.div className="img-surround">
+              <Link to="/hrafn-bomber-jacket">
+                <motion.img
+                  initial={{ opacity: 0, y: 100 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.6, delay: 1.2, ...transition },
+                  }}
+                  src="/c.png"
+                />
+              </Link>
+            </motion.div>
           </div>
         </div>
-      </div>
-      <div className="product">
-        <div className="main">
-          <motion.div className="details">
-            <div className="brand-name">KARLAR & KONUR</div>
-            <div className="product-name">
-              <div>
-                <motion.h1
-                  variants={letterVariants}
-                  initial="initial"
-                  animate="animate"
-                >
-                  Hrafn
-                </motion.h1>
-              </div>
-              <div>
-                <motion.h1
-                  variants={letterVariants}
-                  initial="initial"
-                  animate="animate"
-                >
-                  Bomber Jacket
-                </motion.h1>
-              </div>
-            </div>
-            <motion.h1
-              className="product-price"
-              variants={letterVariants}
-              initial="initial"
-              animate="animate"
-            >
-              34,990
-            </motion.h1>
-            <motion.div
-              className="product-description"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              A new version of the classic bomber jacket for both the sexes in
-              warm and extremely lightweight. Insulated with PrimaLoft.
-            </motion.div>
-            <button className="button-24">PLACE ORDER</button>
-          </motion.div>
-          <motion.div
-            initial={{ x: 900 }}
-            animate={{
-              x: 0,
-              transition: transition,
-            }}
-            className="jacket"
-          >
-            <motion.img
-              src="/c.png"
-              initial={{ opacity: 0, y: 60 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                transition: { delay: 0.8, ...transition },
-              }}
-            ></motion.img>
-          </motion.div>
-        </div>
-      </div>
-    </div>
+      </motion.div>
+    </>
   );
 }
 
