@@ -7,7 +7,7 @@ import ProductDetails from "./components/ProductDetails";
 function App() {
   const location = useLocation();
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <Routes location={location} key={location.key}>
         <Route index element={<ProductBody />} />
         <Route path="/hrafn-bomber-jacket" element={<ProductDetails />} />

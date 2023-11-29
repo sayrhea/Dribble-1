@@ -24,7 +24,18 @@ const letterVariants = {
 function ProductBody() {
   return (
     <>
-      <motion.header className="site-header">
+      <motion.header
+        className="site-header"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: { duration: 0.6, delay: 1.2, ...transition },
+        }}
+        exit={{
+          opacity: 0,
+          transition: transition,
+        }}
+      >
         <motion.div className="site-header-brand">
           <motion.span>CT</motion.span>
         </motion.div>
@@ -122,18 +133,13 @@ function ProductBody() {
               initial={{ x: 1000 }}
               animate={{ x: 0, transition: transition }}
             ></motion.div>
-            <motion.div
-              className="img-surround"
-              initial={{ right: "50%", x: "50%", top: "50%", y: "-50%" }}
-              exit={{
-                transition: { ...transition, delay: 1 },
-              }}
-            >
+            <motion.div className="img-surround">
               <Link to="/hrafn-bomber-jacket">
                 <motion.img
-                  initial={{ opacity: 0 }}
+                  initial={{ opacity: 0, y: 100 }}
                   animate={{
                     opacity: 1,
+                    y: 0,
                     transition: { duration: 0.6, delay: 1.2, ...transition },
                   }}
                   src="/c.png"
